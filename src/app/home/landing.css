@@ -1,0 +1,309 @@
+@import "tailwindcss";
+
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
+/* header */
+
+.header {
+    height: 70px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px 15px;
+    @apply bg-gray-200;
+    position: fixed;
+    width: 100%;
+}
+
+.top-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.menu {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    @apply bg-gray-200;
+    width: 100%;
+}
+
+.circle {
+    @apply w-[40px] h-[40px] bg-gray-400 rounded-[30px];
+}
+
+.menu-icon {
+    @apply w-[40px] h-[40px] bg-gray-400;
+}
+
+/* main */
+
+.content {
+    display: flex;
+    flex-direction: column;
+    flex:1;
+    background-color: white;
+    padding-top: 70px;
+}
+
+/* main content */
+
+.hero {
+    border: 2px solid red;
+}
+
+.hero-image {
+    @apply h-[220px] bg-gray-300;
+}
+
+.hero-text {
+    text-align: center;
+    margin: 10px 0;
+    font-size: 25px;
+}
+
+.hero-buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-bottom: 5px;
+    @apply bg-gray-300 w-[120px] h-[30px];
+}
+
+.featured {
+    border: 2px solid red;
+}
+
+.featured-title {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    @apply h-[50px];
+}
+
+.featured-job {
+    border: 2px solid red;
+}
+
+.job-thumbnail {
+    @apply h-[220px] bg-gray-300;
+}
+
+.job-data {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 10px 0;
+}
+
+.job-details {
+    display: flex;
+    align-items: center
+}
+
+.company-icon {
+    @apply w-[40px] h-[40px] bg-gray-400 rounded-[30px];
+}
+
+.see-more {
+    text-align: center;
+}
+
+.categories {
+    border: 2px solid red;
+}
+
+.categories-title {
+    text-align: center;
+}
+
+.category {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.category > p {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-bottom: 5px;
+    border: 1px solid gray;
+    @apply  w-[120px] h-[30px];
+}
+
+.company {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.company > p {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-bottom: 5px;
+    border: 1px solid gray;
+    @apply w-[120px] h-[30px];
+}
+
+.process {
+    border: 2px solid red;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.process-title {
+    height: 30px;
+}
+
+.step1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid gray;
+    width: 150px;
+    padding: 20px;
+}
+
+.step-icon {
+    @apply w-[60px] h-[60px] bg-gray-400 rounded-[30px];
+}
+
+.about {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid red;
+}
+
+.about-title {
+    height: 30px;
+}
+
+.about-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.about-image {
+    @apply w-[60px] h-[60px] bg-gray-400 rounded-[30px];
+}
+
+.contact-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.contact1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.contact-icon {
+   margin-right: 5px;
+    @apply w-[25px] h-[25px] bg-gray-400 rounded-[30px];
+}
+
+.subscription {
+    border: 2px solid red;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.subscription-title {
+    height: 20px;
+}
+
+.subscription-data {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.subscription-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.email {
+    @apply flex flex-col items-center justify-center;
+    @apply h-[80px] w-[120px] bg-gray-300;
+    margin-bottom: 10px;
+}
+
+.subscribe {
+    @apply flex flex-col items-center justify-center;
+    @apply bg-gray-300 w-[120px] h-[30px];
+}
+
+/* footer */
+
+.footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: black;
+    height: 240px;
+    @apply bg-gray-300;
+}
+
+.links {
+    margin: 15px 0px;
+}
+
+.social-buttons {
+    display: flex;
+    width: 80px;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.social {
+    @apply w-[40px] h-[40px] bg-gray-400 rounded-[30px];
+}
+
+.logo {
+    @apply w-[40px] h-[40px] bg-gray-400 rounded-[30px];
+    margin-bottom: 15px;
+}
+

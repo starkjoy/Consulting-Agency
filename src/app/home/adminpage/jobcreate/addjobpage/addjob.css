@@ -1,0 +1,29 @@
+@import "tailwindcss";
+
+.apply-head {
+    margin-top: 70px;
+    margin-bottom: 10px;
+    @apply flex flex-col items-center justify-center;
+}
+
+.apply-form {
+    @apply flex flex-col items-center justify-center;
+}
+
+.form1 {
+    margin-bottom: 10px;
+}
+
+.form-input {
+    @apply bg-gray-300 w-[130px] h-[30px];
+}
+
+.apply-button {
+    @apply flex flex-col items-center justify-center;
+    margin-bottom: 20px;
+}
+
+.apply-submit {
+    @apply flex flex-col items-center justify-center;
+    @apply bg-gray-300 w-[155px] h-[30px];
+}

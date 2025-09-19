@@ -1,0 +1,30 @@
+@import "tailwindcss";
+
+.category-add {
+    margin-bottom: 40px;
+}
+
+.category-form {
+    @apply flex flex-col items-center justify-center;
+    margin-bottom: 10px;
+}
+
+.category-list {
+    @apply flex flex-col items-center justify-center; 
+    margin-bottom: 15px;
+}
+
+.delete {
+    @apply flex flex-col items-center justify-center;
+    @apply bg-gray-300 w-[155px] h-[30px];
+}
+
+.company-add {
+    @apply flex flex-col items-center justify-center;
+    margin-bottom: 10px;
+}
+
+.company-form {
+    @apply flex flex-col items-center justify-center;
+    margin-bottom: 15px;
+}

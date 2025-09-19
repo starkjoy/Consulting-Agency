@@ -1,0 +1,15 @@
+@import "tailwindcss";
+
+
+.job-top {
+    border: 2px solid red;
+}
+
+.search-job {
+    width: 100%;
+    @apply flex flex-col items-center justify-center;
+}
+
+.top-filter {
+    @apply flex flex-col items-center justify-center;
+}

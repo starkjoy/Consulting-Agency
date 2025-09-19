@@ -1,0 +1,27 @@
+@import "tailwindcss";
+
+.detail-cover {
+    @apply flex flex-col items-center justify-center;
+    margin-top: 70px;
+}
+
+.detail-image {
+    @apply h-[80px] w-[200px] bg-gray-300;
+}
+
+.detail-content {
+    text-align: center;
+    @apply flex flex-col items-center justify-center;
+}
+
+.detail-content-top {
+    margin-bottom: 10px;
+}
+
+.detail-company-info {
+    @apply flex items-center justify-center;
+}
+
+.detail-logo {
+    @apply w-[40px] h-[40px] bg-gray-400 rounded-[30px];
+}

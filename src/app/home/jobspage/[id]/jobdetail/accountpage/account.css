@@ -1,0 +1,31 @@
+@import "tailwindcss";
+
+.account-form {
+    margin-top: 70px;
+    margin-bottom: 10px;
+    @apply flex flex-col items-center justify-center;
+}
+
+.account-notice {
+    margin-bottom: 10px;
+    text-align: center;
+    @apply flex flex-col items-center justify-center;
+}
+
+.account-name {
+    @apply flex flex-col items-center justify-center; 
+}
+
+.account-input {
+    @apply bg-gray-300 w-[130px] h-[30px];
+}
+
+.account-create {
+    @apply flex flex-col items-center justify-center;
+}
+
+.account-create > p {
+    @apply flex flex-col items-center justify-center;
+    @apply bg-gray-300 w-[155px] h-[30px];
+    margin-top: 15px;
+}

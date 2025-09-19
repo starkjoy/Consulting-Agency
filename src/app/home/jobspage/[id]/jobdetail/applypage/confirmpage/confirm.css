@@ -1,0 +1,17 @@
+@import "tailwindcss";
+
+.confirm-status {
+    @apply flex flex-col items-center justify-center;
+    margin-top: 70px;
+    margin-bottom: 20px;
+}
+
+.confirm-icon {
+    @apply bg-gray-300 w-[155px] h-[100px];
+    margin: 15px 0px;
+}
+
+.confirm-subscription {
+    @apply flex flex-col items-center justify-center;
+    margin-bottom: 20px;
+}

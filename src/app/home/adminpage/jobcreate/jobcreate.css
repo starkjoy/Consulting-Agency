@@ -1,0 +1,46 @@
+
+@import "tailwindcss";
+
+.job-notification {
+    margin-top: 70px;
+    margin-bottom: 10px;
+    @apply flex flex-col items-center justify-center;
+}
+
+.job-notification > p {
+    @apply flex flex-col items-center justify-center;
+    @apply bg-gray-300 w-[155px] h-[30px];
+}
+
+.job-create-title {
+    height: 20px;
+    @apply flex items-center justify-around;
+    margin-bottom: 10px;
+}
+
+.add-job {
+    @apply flex flex-col items-center justify-center;
+    @apply w-[155px] h-[30px];
+    border: 1px solid gray;
+}
+
+.job-data-edit {
+    @apply flex items-center justify-between;
+    padding: 0px 10px;
+}
+
+.job-control {
+    @apply flex items-center justify-around;
+}
+
+.job-control > p {
+    @apply flex flex-col items-center justify-center;
+    @apply bg-gray-300 w-[155px] h-[30px];
+    margin-bottom: 10px;
+}
+
+.edit-job {
+    @apply flex flex-col items-center justify-center;
+    @apply bg-gray-300 w-[155px] h-[30px];
+    margin-bottom: 10px;
+}
