@@ -18,8 +18,8 @@ export default function NewHome() {
                 <p>Find Your Next Career Fast</p>
             </div>
             <div className="hero-buttons">
-                <Link className="create-account" href="/home/jobspage">Create Account</Link>
-                <Link className="browse" href="/subscribe">Browse Jobs</Link>
+                <Link className="create-account" href="">Create Account</Link>
+                <Link className="browse" href="">Browse Jobs</Link>
             </div>
         </section>
         <section className="featured">
