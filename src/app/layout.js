@@ -1,5 +1,9 @@
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Inter, Geist_Mono } from "next/font/google";
 import "./globals.css";
+
+const interSans = Inter({
+  subsets: ["latin"],
+});
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -16,11 +20,18 @@ export const metadata = {
   description: "Website for Realmer Consulting Agency",
 };
 
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
+};
+
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${interSans.className} ${geistMono.variable} antialiased`}
       >
         {children}
       </body>
