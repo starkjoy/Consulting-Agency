@@ -1,6 +1,8 @@
 
 "use client"
 
+import Image from "next/image";
+
 export function DivideProcess() {
     return (
         <div>
@@ -11,13 +13,13 @@ export function DivideProcess() {
     );
 }
 
-export function ProcessStage() {
+export function ProcessStage({ plink=null, ptitle, pdescribed}) {
     return (
         <div>
             <div className="step1">
-                <div className="step-icon"></div>
-                <p className="step-title">Browse Jobs</p>
-                <p className="step-description">Description</p>
+                <Image src={plink} className="step-icon" sizes="100vw" height={0} width={0} alt="vector-icons"/>
+                <p className="step-title">{ptitle}</p>
+                <p className="step-description">{pdescribed}</p>
             </div>
         </div>
     );

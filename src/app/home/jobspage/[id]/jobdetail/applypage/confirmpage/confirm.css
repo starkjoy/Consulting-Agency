@@ -2,16 +2,29 @@
 
 .confirm-status {
     @apply flex flex-col items-center justify-center;
-    margin-top: 70px;
     margin-bottom: 20px;
 }
 
+.confirmed-title {
+    font-weight: 700;
+    font-size: 25px;
+    color: #010157;
+    text-align: center;
+    margin-top: 20px;
+}
+
 .confirm-icon {
-    @apply bg-gray-300 w-[155px] h-[100px];
-    margin: 15px 0px;
+    margin: 60px 0px;
+    width: 250px;
+}
+
+.appreciation-text {
+    text-align: center;
+    color: #010157;
+    width: 300px;
 }
 
 .confirm-subscription {
     @apply flex flex-col items-center justify-center;
-    margin-bottom: 20px;
+    margin-bottom: 50px;
 }

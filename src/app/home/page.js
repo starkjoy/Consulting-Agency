@@ -8,18 +8,62 @@ import CategoryPill from "../../../components/CategoryPill";
 import CompanyPill from "../../../components/CompanyPill";
 import {DivideProcess, ProcessStage} from "../../../components/ProcessStage";
 import ContactOption from "../../../components/ContactOption";
+import { useState, useEffect } from "react";
+import { fetchJobs } from "../../../lib/fetchJobs";
+import { getSubscribed } from "../../../lib/subscription";
+import { useStore } from "../../../store/useStore";
+import Carousel from "../../../components/Carousel";
 
 export default function NewHome() {
+    
+    const [jobs, setJobs] = useState([]);
+    const [subscribed, setSubscribed] = useState(false);
+    const [emailUser, setEmailUser] = useState("");
+    const [emailInput, setEmailInput] = useState("");
+    const { loggedIn, setLoggedIn } = useStore();
+
+
+    useEffect(() => {
+        async function loadJobs() {
+          const data = await fetchJobs();
+          setJobs(data);
+        }
+        loadJobs();
+    }, []);
+
+
+    useEffect(() => {
+        if (!emailUser) return
+    
+        async function subscribe() {
+          const result = await getSubscribed(emailUser)
+          if (result) {
+            setSubscribed(true) // flip state if subscription was successful
+          }
+        }
+    
+        subscribe()
+    }, [emailUser]) // runs whenever emailUser changes
+
+
+    const handleEmailList = () => {
+        setEmailUser(emailInput);
+        setEmailInput("");
+    }
+
+
   return (
     <div>
-        <section className="hero">
-            <div className="hero-image"></div>
+        <section id="hero" className="hero">
+            <div className="hero-image">
+                <Carousel />
+            </div>
             <div className="hero-text">
                 <p>Find Your Next Career Fast</p>
             </div>
             <div className="hero-buttons">
-                <Link className="create-account" href="">Create Account</Link>
-                <Link className="browse" href="">Browse Jobs</Link>
+                { !loggedIn && <Link className="create-account" href="/home/accountpage">Create Account</Link>}
+                <Link className="browse" href="/home/jobspage">Browse Jobs</Link>
             </div>
         </section>
         <section className="featured">
@@ -28,65 +72,111 @@ export default function NewHome() {
             </div>
             <div className="featured-title"><p>Featured Jobs</p></div>
             <div className="featured-jobs">
-                <JobComponent/>
-                <JobComponent/>
-                <JobComponent/>
+                {jobs.map((job, index) => (
+                    <JobComponent key={index} job={job} />
+                ))}
             </div>
         </section>
-        <section className="categories">
+        <section id="categories" className="categories">
             <div className="divider">
                 <div className="divide"></div>
             </div>
             <div className="categories-title"><p>Categories</p></div>
             <div className="category-group">
-               <CategoryPill />
-               <CategoryPill />
-               <CategoryPill />
-               <CategoryPill />
-               <CategoryPill />
-               <CategoryPill />
-               <CategoryPill />
+               <CategoryPill variant="category" catvalue="Design" />
+               <CategoryPill variant="category" catvalue="Science & Technology"  />
+               <CategoryPill variant="category" catvalue="Manufacturing" />
+               <CategoryPill variant="category" catvalue="Business" />
+               <CategoryPill variant="category" catvalue="Agriculture"  />
+               <CategoryPill variant="category" catvalue="Consultings" />
+               <CategoryPill variant="category" catvalue="Programming"  />
+               <CategoryPill variant="category" catvalue="Cleaning & Sanitation"  />
             </div>
-            <div className="company-group">
-                    <CompanyPill />
-                    <CompanyPill />
-                    <CompanyPill />
-                    <CompanyPill />
-                    <CompanyPill />
-                    <CompanyPill />
-                    <CompanyPill />
-                    <CompanyPill />
-                    <CompanyPill />
-                    <CompanyPill />
-            </div>
+            {/* <div className="company-group">
+            </div> */}
         </section>
-        <section className="process">
+        <section id="process" className="process">
             <div className="divider">
                 <div className="divide"></div>
             </div>
             <div className="process-title"><p>How It Works</p></div>
             <div className="title-content">
-                <ProcessStage />
+                <ProcessStage 
+                    ptitle="Browse Job"
+                    pdescribed="Quickly scan curated openings that match your skills and preferences"
+                    plink="/magnifying.svg"
+                />
                 <DivideProcess />
-                <ProcessStage />
+                <ProcessStage 
+                    ptitle="Apply Job"
+                    pdescribed="Submit a tailored application form containing details employers need"
+                    plink="/document.svg"
+                />
                 <DivideProcess />
-                <ProcessStage />
+                <ProcessStage 
+                    ptitle="Get Hired"
+                    pdescribed="Patiently wait on next steps as employers consider your application thoroughly"
+                    plink="/handshake.svg"
+                />
             </div>
         </section>
-        <section className="about">
+        <section id="about" className="about">
             <div className="divider">
                 <div className="divide"></div>
             </div>
             <div className="about-content">
                 <div className="about-title">About</div>
                 <Image src="/big_rcg.png" height={0} width={0} alt="company" sizes="100vw" className="about-image"/>
-                <div className="describe"><p>Description Text</p></div>
+                <div className="describe">
+                    <p className="company-description">
+                        Realmer Consulting Agency is a trusted international recruitment and consulting firm
+                        connecting job seekers with top employers worldwide. With offices in Accra and Kumasi
+                        and a network of over 130 global partners, we provide professional recruitment,
+                        business consulting, and travel services to help people and organizations thrive. <Link href="/home/aboutpage" className="about-link">Learn More</Link>
+                    </p></div>
+                <div className="company-profiles">
+                    <div className="company-profile">
+                        <Image src="/pic_1.png" height={0} width={0} alt="profile" sizes="100vw" className="company-profile-pic"/>
+                        <div className="company-profile-name"> Rev. Cosmos Nimako <br/><span className="profile-post">C.E.O</span></div>
+                    </div>
+                    <div className="company-profile">
+                        <Image src="/pic_2.png" height={0} width={0} alt="profile" sizes="100vw" className="company-profile-pic"/>
+                        <div className="company-profile-name">Akua Boakyewaa <br/><span className="profile-post">Lawyer</span></div>
+                    </div>
+                    <div className="company-profile">
+                        <Image src="/pic_3.png" height={0} width={0} alt="profile" sizes="100vw" className="company-profile-pic"/>
+                        <div className="company-profile-name">Elvis Ofori <br/><span className="profile-post">HR Assistant</span></div>
+                    </div>
+                    <div className="company-profile">
+                        <Image src="/pic_4.png" height={0} width={0} alt="profile" sizes="100vw" className="company-profile-pic"/>
+                        <div className="company-profile-name">Kojo Boahen <br/><span className="profile-post">HR Assistant</span></div>
+                    </div>
+                    <div className="company-profile">
+                        <Image src="/pic_5.png" height={0} width={0} alt="profile" sizes="100vw" className="company-profile-pic"/>
+                        <div className="company-profile-name">Frank Osei Tutu <br/><span className="profile-post">Business Consultant</span></div>
+                    </div>
+                </div>
             </div>
             <div className="contact-content">
-                <ContactOption />
+                <ContactOption 
+                    contacticon="/location.svg"
+                    contactfield="Adum-Kumasi, Ghana"
+                />
+                <ContactOption 
+                    contacticon="/mail.svg"
+                    contactfield="info@realmerconsultingagency.ceo"
+                />
+                <ContactOption 
+                    contacticon="/phone.svg"
+                    contactfield="+23356489961"
+                />
+                <ContactOption 
+                    contacticon="/whatsapp.svg"
+                    contactfield="+233242810008"
+                />
             </div>
         </section>
-        <section className="subscription">
+        <section id="subscription" className="subscription">
             <div className="divider">
                 <div className="divide"></div>
             </div>
@@ -95,8 +185,15 @@ export default function NewHome() {
             </div>
             <div className="subscription-content">
                 <p className="subscription-description">Stay Updated</p>
-                <div className="email"><p>Enter Email</p></div>
-                <div className="subscribe"><p>Subscribe</p></div>
+                <input 
+                    type="email"
+                    placeholder="Enter email"
+                    className="email"
+                    value={emailInput}
+                    onChange={(e) => setEmailInput(e.target.value)}
+                />
+                <div onClick={handleEmailList} className="subscribe"><p>Subscribe</p></div>
+                { subscribed && <p className="subscribe-thanks">Thank You for Subscribing<br/><span onClick={() => setSubscribed(false)} className="subscribe-thanks-note">Click to dismiss</span></p>}
             </div>
         </section>
     </div>

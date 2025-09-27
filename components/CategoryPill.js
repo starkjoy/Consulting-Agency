@@ -1,11 +1,11 @@
 
 "use client"
 
-export default function CategoryPill() {
+export default function CategoryPill({variant, mycat, CatClick, id, catvalue}) {
     return (
         <div>
-            <div className="category">
-                <p>Category1</p>
+            <div onClick={() => CatClick(id)} className={ variant === "category" ? "category" : mycat }>
+                <p>{catvalue}</p>
             </div>
         </div>
     );

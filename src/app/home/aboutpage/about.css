@@ -1,0 +1,141 @@
+@import "tailwindcss";
+
+.introduction {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.introduction-head {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.rcg-logo {
+    width: 150px;
+    margin-bottom: 40px;
+}
+
+.tag-line {
+    font-size: 15px;
+    text-align: center;
+    color: #4E4E4E;
+    margin-bottom: 25px;
+}
+
+.introduction-body {
+    width: 310px;
+    margin-bottom: 30px;
+}
+
+.subheading {
+    font-size: 20px;
+    color: #010157;
+    font-weight: 500;
+    margin: 0px 0px 12px 0px;
+}
+
+.paragraph {
+    margin-bottom: 25px;
+}
+
+.qdivider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 2px;
+}
+
+.qdivide {
+    width: 300px;
+    background-color: #EDEDED;
+    height: 2px;
+}
+
+.quote-highlight {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.quote-body {
+    margin: 30px 0px;
+    width: 280px;
+    font-size: 25px;
+    color: #706767;
+    font-weight: 300;
+}
+
+.services {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.services-intro {
+    width: 310px;
+}
+
+.services-body {
+    width: 310px;
+    margin-bottom: 25px;
+}
+
+.service-list {
+    margin-bottom: 20px;
+}
+
+.block-title {
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+ul {
+    margin-bottom: 25px;
+    margin-left: 25px;
+}
+
+ul > li {
+    list-style-type: disc;
+    color: #4E4E4E;
+}
+
+.purpose {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.purpose-body {
+    width: 310px;
+}
+
+.purpose-list {
+    margin-bottom: 25px;
+}
+
+.success-stories {
+    width: 310px;
+}
+
+.conclusion {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+
+.future-prospect, .conclusion-body {
+    width: 310px;
+}

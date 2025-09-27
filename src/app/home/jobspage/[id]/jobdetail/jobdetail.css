@@ -2,11 +2,10 @@
 
 .detail-cover {
     @apply flex flex-col items-center justify-center;
-    margin-top: 70px;
-}
-
-.detail-image {
-    @apply h-[80px] w-[200px] bg-gray-300;
+    width: 100%;
+    height: 250px;
+    background-color: #010157;
+    margin-bottom: 15px;
 }
 
 .detail-content {
@@ -16,12 +15,101 @@
 
 .detail-content-top {
     margin-bottom: 10px;
+    width: 100%;
 }
 
 .detail-company-info {
-    @apply flex items-center justify-center;
+    @apply flex justify-center;
+    text-align: left;
+    margin-bottom: 10px;
 }
 
 .detail-logo {
-    @apply w-[40px] h-[40px] bg-gray-400 rounded-[30px];
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 55px;
+    width: 70px;
+    background-color: #010157;
+    border-radius: 90px;
+    margin: 0px 10px;
+}
+
+.detail-jobs {
+    width: 100%;
+    padding: 0px 30px;
+}
+
+.detail-name {
+    color: #AEAEAE;
+    font-size: 16px;
+}
+
+.detail-title {
+    color: #010157;
+    font-weight: 500;
+    font-size: 20px;
+}
+
+.detail-posted {
+    color: #AEAEAE;
+    font-weight: 300;
+    font-size: 14px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+.detail-post {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 15px;
+}
+
+.detail-description {
+    text-align: left;
+    padding: 0px 30px;
+    margin-bottom: 20px;
+}
+
+.detail-buttons {
+    margin-bottom: 100px;
+}
+
+.detail-create, .detail-apply {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-bottom: 5px;
+    background-color: #010157;
+    color: white;
+    width: 160px;
+    height: 45px;
+    border-radius: 50px;
+    font-size: 16px;
+}
+
+.detail-apply {
+    background-color: white;
+    color: #010157;
+    border: 2px solid #F2F2F2;
+    margin-bottom: 8px;
+}
+
+.detail-notice-text {
+    text-align: center;
+    margin: 30px 0px 50px 0;
+    color: #4E4E4E;
+    font-size: 16px;
+}
+
+.notice-highlight {
+    color: #242424;
+    font-weight: 500;
 }

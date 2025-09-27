@@ -1,0 +1,66 @@
+@import "tailwindcss";
+
+.account-form {
+    @apply flex flex-col items-center justify-center;
+    height: 500px;
+    margin-bottom: 30px;
+}
+
+.account-entry {
+    width: 260px;
+}
+
+.account-name {
+    color: #010157;
+    font-weight: 400;
+    width: 100%;
+    text-align: left;
+    margin-bottom: 30px;
+}
+
+.account-input {
+    @apply bg-gray-300 w-[130px] h-[45px];
+    width: 100%;
+    margin-top: 5px;
+    border-radius: 5px;
+    background-color: white; 
+    border: 1.5px solid #F2F2F2;
+    outline: none;
+    padding: 0px 15px;
+}
+
+.account-input:focus {
+    border: 2px solid #010157;
+}
+
+.account-create {
+    @apply flex flex-col items-center justify-center;
+}
+
+.account-create > p {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 170px;
+    height: 50px;
+    border-radius: 50px;
+    font-size: 16px;
+    background-color: white;
+    color: #010157;
+    border: 2px solid #F2F2F2;
+    font-weight: 500;
+    margin-top: 50px;
+}
+
+.account-notice {
+    margin: 30px 0px 50px 0px;
+    text-align: center;
+    @apply flex flex-col items-center justify-center;
+    color: #010157;
+}
+
+.account-notice-text {
+    width: 300px;
+}
