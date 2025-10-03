@@ -12,6 +12,7 @@ export default function HomeLayout({children}) {
 
   const [openMenu, setOpenMenu] = useState(false);
   const { loggedIn, setLoggedIn } = useStore();
+  const { userId, setUserId } = useStore();
   const [loggedName, setLoggedName] = useState("");
   const [profileColor, setProfileColor] = useState("")
 
@@ -25,10 +26,12 @@ export default function HomeLayout({children}) {
       if (session?.user) {
         setLoggedIn(true)
         setLoggedName(session.user.email)
+        setUserId(session.user.id); 
       } else {
         // no session yet → stay logged out
         setLoggedIn(false)
         setLoggedName("")
+        setUserId(null); 
       }
     }
   
@@ -40,10 +43,12 @@ export default function HomeLayout({children}) {
           // user just clicked magic link → flip to logged in
           setLoggedIn(true)
           setLoggedName(session.user.email)
+          setUserId(session.user.id); 
         }
         if (event === "SIGNED_OUT") {
           setLoggedIn(false)
           setLoggedName("")
+          setUserId(null); 
         }
       }
     )
@@ -108,7 +113,7 @@ export default function HomeLayout({children}) {
         <Link href="#"><Image src="/move_up.svg" height={0} width={0} alt="icon" className="top_nav"/></Link>
         <div className="links">
           <Link href="/#about" className="footer-link">About</Link>
-          <Link href="/#about" className="footer-link">Contact</Link>
+          <Link href="/#contact" className="footer-link">Contact</Link>
           <Link href="/#categories" className="footer-link">Categories</Link>
           <Link href="/home/jobspage" className="footer-link">Browse Jobs</Link>
           <Link href="/#process" className="footer-link">How It Works</Link>

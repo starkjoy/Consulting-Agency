@@ -58,11 +58,87 @@
 }
 
 .top-filter {
-    @apply flex items-center justify-center;
-    flex-wrap: wrap;
-    row-gap: 5px;
+    display: flex;
+    flex-direction: column;
     margin-top: 10px;
     margin-bottom: 15px;
+}
+
+.filter-parent {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 0px 20px;
+}
+
+.filter-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #EDEDED;
+    border-radius: 5px;
+    padding: 0px 15px;
+    height: 35px;
+    font-size: 15px;
+    font-family: 600;
+    color: #4E4E4E;
+    margin-bottom: 18px;
+    margin-left: 15px;
+}
+
+.filter-arrow {
+    width: 12px;
+    margin-left: 10px;
+}
+
+.filter-arrow2 {
+    width: 12px;
+    margin-left: 10px;
+    transform: rotate(180deg);
+}
+
+.filter-pane {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background-color: #FCFCFC;
+    border-radius: 20px;
+    padding-bottom: 20px;
+}
+
+.filter-head {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #AEAEAE;
+    font-size: 16px;
+    border-bottom: 1px solid #eeeeee;
+    padding: 20px 0px;
+}
+
+.filter-head-category {
+    margin-right: 10px;
+}
+
+.filter-category, .filter-company {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-wrap: wrap;
+    row-gap: 5px;
+}
+
+.filter-selected {
+    color: #010157;
+    font-weight: 600;
+}
+
+.filter-content {
+    height: 300px;
+    overflow-y:scroll;
+    padding-top: 20px
 }
 
 .result-filter {

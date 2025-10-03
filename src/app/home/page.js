@@ -13,6 +13,7 @@ import { fetchJobs } from "../../../lib/fetchJobs";
 import { getSubscribed } from "../../../lib/subscription";
 import { useStore } from "../../../store/useStore";
 import Carousel from "../../../components/Carousel";
+import { supabase } from "../../../lib/supabaseClient";
 
 export default function NewHome() {
     
@@ -25,11 +26,21 @@ export default function NewHome() {
 
     useEffect(() => {
         async function loadJobs() {
-          const data = await fetchJobs();
-          setJobs(data);
+          const { data, error } = await supabase
+            .from("jobs")
+            .select("*")
+            .eq("Isfeatured", true);  // 👈 filter only featured
+      
+          if (error) {
+            console.error("Error fetching featured jobs:", error.message);
+          } else {
+            setJobs(data);
+          }
         }
+      
         loadJobs();
     }, []);
+      
 
 
     useEffect(() => {
@@ -88,9 +99,10 @@ export default function NewHome() {
                <CategoryPill variant="category" catvalue="Manufacturing" />
                <CategoryPill variant="category" catvalue="Business" />
                <CategoryPill variant="category" catvalue="Agriculture"  />
-               <CategoryPill variant="category" catvalue="Consultings" />
+               <CategoryPill variant="category" catvalue="Consulting" />
                <CategoryPill variant="category" catvalue="Programming"  />
                <CategoryPill variant="category" catvalue="Cleaning & Sanitation"  />
+               <CategoryPill variant="category" catvalue="Many More"  />
             </div>
             {/* <div className="company-group">
             </div> */}
@@ -174,6 +186,28 @@ export default function NewHome() {
                     contacticon="/whatsapp.svg"
                     contactfield="+233242810008"
                 />
+            </div>
+        </section>
+        <section id="contact" className="contact">
+            <div className="divider">
+                <div className="divide"></div>
+            </div>
+            <div className="contact-card">
+                <div className="contact-title">Have a question? <br/>Send us a message</div>
+                <div className="contact-container">
+                    <div className="contact-fields">
+                        <input
+                            placeholder="Enter Name"
+                            className="contact-name"
+                        />
+                        <input
+                            placeholder="Enter Message Title"
+                            className="contact-message-title"
+                        />
+                        <textarea placeholder="Enter Message" className="contact-message"></textarea>
+                        <p className="send-message">Send</p>
+                    </div>
+                </div>
             </div>
         </section>
         <section id="subscription" className="subscription">

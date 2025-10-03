@@ -9,6 +9,7 @@ import { fetchJobs } from "../../../../lib/fetchJobs"
 import Image from "next/image"
 import JobComponent from "../../../../components/JobComponent"
 import { fetchCategories } from "../../../../lib/fetchCategories"
+import { fetchCompanies } from "../../../../lib/fetchCompany"
 
 export default function JobPage() {
 
@@ -19,6 +20,10 @@ export default function JobPage() {
     const [queryResult, setQueryResult] = useState([]);
     const [catSelectID, setCatSelectID] = useState([]);
     const [categoryList, setCategoryList] = useState([]);
+    const [companyList, setCompanyList] = useState([]);
+    const [filterTag, setFilterTag] = useState(false);
+    const [filterCategory, setFilterCategory] = useState(true);
+    const [filterCompany, setFilterCompany] = useState(false);
 
     useEffect(() => {
       async function loadJobs() {
@@ -47,7 +52,15 @@ export default function JobPage() {
     
       loadCategories();
     }, []);
+
+    useEffect(() => {
+      async function loadCompanies() {
+        const data = await fetchCompanies(); // fetch from Supabase
+        setCompanyList(data);
+      }
     
+      loadCompanies();
+    }, []);
 
     const handleResult = () => {
       setFindJob(true);
@@ -92,6 +105,15 @@ export default function JobPage() {
       });
     };
     
+    const handleFilterCategory = () => {
+        setFilterCompany(false);
+        setFilterCategory(true);
+    }
+      
+    const handleFilterCompany = () => {
+        setFilterCategory(false);
+        setFilterCompany(true);
+    }
 
   return (
     <div>
@@ -109,18 +131,46 @@ export default function JobPage() {
           </div>
         </div>
         <div className="result-filter">
-          { !findJob && <div className="top-filter">
-            {categoryList.map((cat) => (
-                <CategoryPill
-                  key={cat.id}
-                  id={cat.id}
-                  mycat={catSelectID.includes(cat.id) ? "result-selected" : "result-pill"}
-                  CatClick={handleCatSelect}
-                  catvalue={cat.name}
-                  variant="category"
-                />
-              ))}
-          </div>}
+          { !findJob && 
+            <div className="filter-parent">
+              <div onClick={() => setFilterTag(prev => !prev)} className="filter-button">
+                <p>Filter tags</p>
+                <Image src="/filter_arrow.svg" className={ filterTag ? "filter-arrow" : "filter-arrow2" } sizes="100vw" height={0} width={0} alt="arrow" />
+              </div>
+              {filterTag && <div className="filter-pane">
+                <div className="filter-head">
+                  <p onClick={handleFilterCategory} className={` filter-head-category ${filterCategory ? "filter-selected" : ""}`}>Category</p>
+                  <p onClick={handleFilterCompany} className={filterCompany ? "filter-selected" : ""}>Companies</p>
+                </div>
+                <div className="filter-content">
+                  { filterCategory && <div className="filter-category">
+                    {categoryList.map((cat) => (
+                        <CategoryPill
+                          key={cat.id}
+                          id={cat.id}
+                          mycat={catSelectID.includes(cat.id) ? "result-selected" : "result-pill"}
+                          CatClick={handleCatSelect}
+                          catvalue={cat.name}
+                          variant="category"
+                        />
+                      ))}
+                  </div>}
+                  { filterCompany && <div className="filter-company">
+                    {companyList.map((cat) => (
+                          <CategoryPill
+                            key={cat.id}
+                            id={cat.id}
+                            mycat={catSelectID.includes(cat.id) ? "result-selected" : "result-pill"}
+                            CatClick={handleCatSelect}
+                            catvalue={cat.name}
+                            variant="category"
+                          />
+                        ))}
+                  </div>}
+                </div>
+              </div>}
+            </div>
+          }
           { findJob && <div className="bottom-filter">
             <p className="results-title">Showing results for</p>
             <p className="results-query">"{query}"</p>
@@ -128,7 +178,7 @@ export default function JobPage() {
         </div>
       </section>
       { !findJob && <div className="job-content">
-          <section className="job-featured">
+          {/* <section className="job-featured">
             <div className="divider">
               <div className="divide"></div>
             </div>
@@ -138,7 +188,7 @@ export default function JobPage() {
                       <JobComponent key={job.id} job={job} />
                 ))}
               </div>
-          </section>
+          </section> */}
           <section className="job-list">
             <div className="divider">
               <div className="divide"></div>

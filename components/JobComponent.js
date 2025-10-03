@@ -46,7 +46,7 @@ export default function JobComponent({job}) {
     return (
         <div>
             <div className="featured-job">
-                <div className="job-thumbnail" style={{backgroundImage: "url('/graphic_cover.jpeg')"}} ></div>
+                <div className="job-thumbnail" style={{backgroundImage: `url(${job.jobCoverImg || '/rcg-default.png'})`}} ></div>
                 <div className="job-data">
                     <div className="job-details">
                             <div className="job-head">
@@ -55,6 +55,7 @@ export default function JobComponent({job}) {
                             </div>
                             <div className="job-info">
                                 <p className="job-description">{shortenDescription(job.description, 20)}</p>
+                                <p className="job-pay">GHS {job.salary}</p>
                             </div>
                     </div>
                     <div className="apply"><Link className="apply" href={`/home/jobspage/${job.id}/jobdetail`}><p>Apply</p></Link></div>

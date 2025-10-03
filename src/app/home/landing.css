@@ -270,10 +270,20 @@
 
 .job-head {
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    align-items: flex-start;
     justify-content: center;
     margin-bottom: 10px;
-    margin-bottom: 10px;
+    width: 100%;
+}
+
+.job-pay {
+    color: #010157;
+    font-weight: 600;
+    font-size: 18px;
+    width: 100%;
+    margin-top: 10px;
+    text-align: left;
 }
 
 .job-info {
@@ -562,6 +572,97 @@
 .contact-text {
     color:#4E4E4E;
     font-size: 16px;
+}
+
+.contact {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+
+.contact-title {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #010157;
+    font-weight: 600;
+    font-size: 22px;
+    margin-bottom: 15px;
+    margin-top: 30px;
+    @apply h-[50px];
+}
+
+.contact-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #EDEDED;
+    width: 320px;
+    margin-top: 50px;
+    border-radius: 15px;
+}
+
+.contact-fields {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 280px;
+    margin: 50px;
+}
+
+.contact-fields > input {
+    width: 100%;
+    outline: none;
+    background-color: white;
+    height: 60px;
+    padding: 15px;
+    margin-bottom: 20px;
+    font-family: Inter;
+    border-radius: 4px;
+}
+
+.contact-fields > input::placeholder {
+    color: #B9B9B9;
+}
+
+.contact-fields > textarea {
+    width: 100%;
+    outline: none;
+    background-color: white;
+    height: 120px;
+    padding: 15px;
+    margin-bottom: 20px;
+    font-family: Inter;
+    border-radius: 4px;
+    resize: none;
+}
+
+.contact-fields > textarea::placeholder {
+    color: #B9B9B9;
+}
+
+.contact-fields > textarea:focus, input:focus {
+    border: 2px solid #010157;
+    cursor: pointer;
+}
+
+.send-message {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #AEAEAE;
+    padding: 0px 25px;
+    height: 40px;
+    border-radius: 40px;
+    margin-top: 20px;
+    color: white;
 }
 
 .subscription {

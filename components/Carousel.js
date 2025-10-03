@@ -1,5 +1,5 @@
 import { Swiper, SwiperSlide } from "swiper/react";
-import { EffectFade, Autoplay } from "swiper/modules";
+import { Autoplay } from "swiper/modules";
 import "swiper/css"; 
 import "swiper/css/effect-fade";
 
@@ -7,11 +7,10 @@ export default function Carousel() {
   return (
     <div className="hero-wrapper">
       <Swiper
-        modules={[EffectFade, Autoplay]}
+        modules={[Autoplay]}
         autoplay={{ delay: 4000, disableOnInteraction: false }}
         loop={true}
-        effect="fade"
-        fadeEffect={{ crossFade: true }}
+        speed={800}
         className="hero-swiper"
       >
         <SwiperSlide>

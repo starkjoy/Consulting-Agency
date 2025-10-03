@@ -48,6 +48,10 @@
     justify-content: center;
 }
 
+.important-field {
+    color: rgb(161, 1, 1);
+}
+
 .form-line {
     position: absolute;
     height: 1px;
@@ -81,6 +85,7 @@
     align-items: flex-start;
     justify-content: center;
     margin-bottom: 13px;
+    text-align: left;
 }
 
 .forms-actual > label {
@@ -143,7 +148,7 @@
     align-items: center;
     justify-content: center;
     border: 1px solid #e7e7e7;
-    width: 80px;
+    width: 100%;
     height: 100%;
     border-radius: 5px;
     position: relative;
@@ -203,6 +208,11 @@
     color: rgb(189, 10, 10);
 }
 
+.upload-filename {
+    color: #4E4E4E;
+    width: 100%;
+}
+
 .apply-section {
     @apply flex flex-col items-center justify-center;
     margin-bottom: 20px;
@@ -235,7 +245,7 @@
     align-items: center;
     justify-content: center;
     text-align: center;
-    width: 185px;
+    padding: 0px 30px;
     height: 45px;
     border-radius: 50px;
     font-size: 15px;
@@ -245,4 +255,32 @@
     margin-top: 40px;
     margin-bottom: 80px;
     font-weight: 500;
+}
+
+.no-submit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0px 30px;
+    height: 45px;
+    border-radius: 50px;
+    font-size: 15px;
+    background-color: white;
+    color: #010157;
+    border: 2px solid #F2F2F2;
+    margin-top: 40px;
+    margin-bottom: 80px;
+    font-weight: 500;
+    cursor: pointer;
+    opacity: 50%; 
+}
+
+.form-empty {
+    color: #010157;
+    width: 200px;
+    text-align: center;
+    margin-bottom: 30px;
+    font-weight: 600;
 }

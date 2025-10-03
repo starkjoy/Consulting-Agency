@@ -18,22 +18,28 @@ export default function JobDetail({params}) {
     async function fetchJob() {
       const { data, error } = await supabase
         .from("jobs")
-        .select("*")
+        .select(`
+          *,
+          company:companies(*),
+          category:categories(*)
+        `)
         .eq("id", id)
-        .single()
-
+        .single();
+  
       if (error) {
-        console.error("Error fetching job:", error.message)
-        setError(error)
+        console.error("Error fetching job:", error.message);
+        setError(error);
       } else {
-        setJob(data)
+        setJob(data);
       }
     }
-
+  
     if (id) {
-      fetchJob()
+      fetchJob();
     }
-  }, [id])  
+  }, [id]);
+  
+  
 
     const formatDate = (createdAt) => {
         if (!createdAt) return "Unknown";
@@ -65,17 +71,20 @@ export default function JobDetail({params}) {
 
   return (
     <div>
-        <section className="detail-cover">
+        <section className="detail-cover" style={{backgroundImage: `url(${job?.jobCoverImg || '/rcg-default.png'})`}}>
+          <div className="detail-cateogry-parent">
+            <p className="detail-category">{job?.category?.name}</p>
+          </div>
         </section>
         <section className="detail-content">
             <div className="detail-content-top">
                 <div className="detail-company-info">
                     {/* <div className="detail-logo"></div> */}
                     <div className="detail-jobs">
-                        <p className="detail-name">Company Name</p>
-                        <p className="detail-title">{job.title}</p>
+                        <p className="detail-name">{job?.company?.name}</p>
+                        <p className="detail-title">{job?.title}</p>
                         <div className="detail-post">
-                            <p className="detail-posted">Posted: {formatDate(job.created_at)}</p>
+                            <p className="detail-posted">Posted: {formatDate(job?.created_at)}</p>
                         </div>
                     </div>
                 </div>
@@ -83,6 +92,12 @@ export default function JobDetail({params}) {
                     <div className="divide"></div>
                 </div>
                 <p className="detail-description">{job?.description}</p>
+                <p className="detail-location-label">Located at:</p>
+                <p className="detail-location">{job?.location}</p>
+                <div className="divider">
+                    <div className="divide"></div>
+                </div>
+                <p className="detail-pay">GHS {job?.salary}</p>
             </div>
             <div className="detail-buttons">
                 <Link className="detail-apply" href={`/home/jobspage/${job?.id}/jobdetail/applypage`}>{!loggedIn ? `Apply as Guest` : `Apply`}</Link>
@@ -93,11 +108,11 @@ export default function JobDetail({params}) {
             <div className="divider">
               <div className="divide"></div>
             </div>
-            <p className="detail-notice-text">
+           { !loggedIn && <p className="detail-notice-text">
                 With just <span className="notice-highlight">one account</span>, you can store your
                 details, apply anywhere, and pick up right
                 where you left off. <span className="notice-highlight">No repeats, no stress.</span>
-            </p>
+            </p>}
         </section>
     </div>
   );
