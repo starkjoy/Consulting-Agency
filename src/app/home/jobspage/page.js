@@ -19,6 +19,7 @@ export default function JobPage() {
     const [query, setQuery] = useState("");
     const [queryResult, setQueryResult] = useState([]);
     const [catSelectID, setCatSelectID] = useState([]);
+    const [comSelectID, setComSelectID] = useState([]);
     const [categoryList, setCategoryList] = useState([]);
     const [companyList, setCompanyList] = useState([]);
     const [filterTag, setFilterTag] = useState(false);
@@ -38,10 +39,20 @@ export default function JobPage() {
       if (catSelectID.length === 0) {
         setQueryResult(jobs);
       } else {
-        const filtered = jobs.filter(job => catSelectID.includes(job.categoryId));
+        const filtered = jobs.filter(job => catSelectID.includes(job.category_id));
         setQueryResult(filtered);
+        console.log(filtered);
       }
     }, [catSelectID, jobs]);
+  
+    useEffect(() => {
+      if (comSelectID.length === 0) {
+        setQueryResult(jobs);
+      } else {
+        const filtered = jobs.filter(job => comSelectID.includes(job.company_id));
+        setQueryResult(filtered);
+      }
+    }, [comSelectID, jobs]);
 
 
     useEffect(() => {
@@ -104,7 +115,19 @@ export default function JobPage() {
         }
       });
     };
-    
+
+    const handleComSelect = (id) => {
+      setComSelectID((prev) => {
+        if (prev.includes(id)) {
+          // remove if already selected
+          return prev.filter((item) => item !== id);
+        } else {
+          // add if not selected
+          return [...prev, id];
+        }
+      });
+    };
+      
     const handleFilterCategory = () => {
         setFilterCompany(false);
         setFilterCategory(true);
@@ -114,6 +137,7 @@ export default function JobPage() {
         setFilterCategory(false);
         setFilterCompany(true);
     }
+
 
   return (
     <div>
@@ -151,7 +175,6 @@ export default function JobPage() {
                           mycat={catSelectID.includes(cat.id) ? "result-selected" : "result-pill"}
                           CatClick={handleCatSelect}
                           catvalue={cat.name}
-                          variant="category"
                         />
                       ))}
                   </div>}
@@ -160,10 +183,9 @@ export default function JobPage() {
                           <CategoryPill
                             key={cat.id}
                             id={cat.id}
-                            mycat={catSelectID.includes(cat.id) ? "result-selected" : "result-pill"}
-                            CatClick={handleCatSelect}
+                            mycat={comSelectID.includes(cat.id) ? "com-selected" : "com-pill"}
+                            CatClick={handleComSelect}
                             catvalue={cat.name}
-                            variant="category"
                           />
                         ))}
                   </div>}
@@ -178,24 +200,13 @@ export default function JobPage() {
         </div>
       </section>
       { !findJob && <div className="job-content">
-          {/* <section className="job-featured">
-            <div className="divider">
-              <div className="divide"></div>
-            </div>
-            <div className="featured-title"><p>Featured Jobs</p></div>
-              <div className="featured-jobs">
-                {jobs.map((job) => (
-                      <JobComponent key={job.id} job={job} />
-                ))}
-              </div>
-          </section> */}
           <section className="job-list">
             <div className="divider">
               <div className="divide"></div>
             </div>
             <div className="featured-title"><p>Jobs</p></div>
             <div className="featured-jobs">
-              {jobs.map((job) => (
+              {queryResult.map((job) => (
                 <JobComponent key={job.id} job={job} />
               ))}
             </div>

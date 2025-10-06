@@ -47,7 +47,7 @@ export default function AccountPage() {
     <div>
         <section className="account-form">
           <div className="account-entry">
-            <div className="account-name">
+            {/* <div className="account-name">
               <p>Enter Name</p>
               <input 
                 type="text"
@@ -55,7 +55,7 @@ export default function AccountPage() {
                 onChange={(e) => {setUserName(e.target.value); handleLog();}}
                 className="account-input"
               />           
-            </div>
+            </div> */}
             <div className="account-name">
               <p>Enter Email</p>
               <input 

@@ -219,6 +219,48 @@
     background-color: #010157;
 }
 
+.com-pill {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+}
+
+.com-pill > p {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-bottom: 5px;
+    border: 2px solid #EDEDED;
+    border-radius: 20px;
+    @apply h-[38px];
+    padding: 0px 15px;
+    color: #4E4E4E;
+}
+
+.com-selected {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+}
+
+.com-selected > p {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-bottom: 5px;
+    border-radius: 20px;
+    @apply h-[38px];
+    color: white;
+    padding: 0px 15px;
+    background-color: #010157;
+}
+
 .nothing-found {
     margin-bottom: 20px;
 }

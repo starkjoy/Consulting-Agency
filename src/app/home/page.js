@@ -22,7 +22,50 @@ export default function NewHome() {
     const [emailUser, setEmailUser] = useState("");
     const [emailInput, setEmailInput] = useState("");
     const { loggedIn, setLoggedIn } = useStore();
+    const [contactForm, setContactForm] = useState({
+        contactName: "",
+        messageTitle: "",
+        contactEmail: "",
+        contactMessage: "",
+    })
+    const [sendContact, setSendContact] = useState(false);
 
+    const emailMock = {
+        contactName: "Joy",
+        messageTitle: "Enquiry",
+        contactEmail: "enquiry@mail",
+        contactMessage: "This is a test"
+    }
+
+    useEffect(() => {
+        if (!sendContact) return;
+    
+        const sendMessage = async () => {
+          try {
+            const res = await fetch("/api/contact", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify(emailMock),
+            });
+    
+            const result = await res.json();
+    
+            if (result.success) {
+              console.log("✅ Message sent successfully!");
+              console.log("📬 Preview link:", result.previewUrl);
+              if (result.previewUrl) window.open(result.previewUrl, "_blank");
+            } else {
+              console.error("❌ Failed to send:", result.error);
+            }
+          } catch (err) {
+            console.error("❌ Error sending:", err.message);
+          } finally {
+            setSendContact(false); // reset trigger
+          }
+        };
+    
+        sendMessage();
+      }, [sendContact]);
 
     useEffect(() => {
         async function loadJobs() {
@@ -41,8 +84,6 @@ export default function NewHome() {
         loadJobs();
     }, []);
       
-
-
     useEffect(() => {
         if (!emailUser) return
     
@@ -55,7 +96,6 @@ export default function NewHome() {
     
         subscribe()
     }, [emailUser]) // runs whenever emailUser changes
-
 
     const handleEmailList = () => {
         setEmailUser(emailInput);
@@ -180,7 +220,7 @@ export default function NewHome() {
                 />
                 <ContactOption 
                     contacticon="/phone.svg"
-                    contactfield="+23356489961"
+                    contactfield="+233506489961"
                 />
                 <ContactOption 
                     contacticon="/whatsapp.svg"
@@ -193,19 +233,33 @@ export default function NewHome() {
                 <div className="divide"></div>
             </div>
             <div className="contact-card">
-                <div className="contact-title">Have a question? <br/>Send us a message</div>
+                <div className="contact-title">For Other Questions? <br/>Send us a message</div>
                 <div className="contact-container">
                     <div className="contact-fields">
                         <input
                             placeholder="Enter Name"
                             className="contact-name"
+                            value={contactForm.contactName}
+                            onChange={(e) => setContactForm({ ...contactForm, contactName: e.target.value})}
                         />
+                        <input
+                            placeholder="Enter Email Address"
+                            className="contact-message-title"
+                            value={contactForm.contactEmail}
+                            onChange={(e) => setContactForm({ ...contactForm, contactEmail: e.target.value})}                            
+                        />                          
                         <input
                             placeholder="Enter Message Title"
                             className="contact-message-title"
-                        />
-                        <textarea placeholder="Enter Message" className="contact-message"></textarea>
-                        <p className="send-message">Send</p>
+                            value={contactForm.messageTitle}
+                            onChange={(e) => setContactForm({ ...contactForm, messageTitle: e.target.value})}                            
+                        />                  
+                        <textarea 
+                            placeholder="Enter Message" className="contact-message"
+                            value={contactForm.contactMessage}
+                            onChange={(e) => setContactForm({ ...contactForm, contactMessage: e.target.value})}                            
+                            ></textarea>
+                        <p onClick={() => setSendContact(true)} className="send-message">Send</p>                        
                     </div>
                 </div>
             </div>

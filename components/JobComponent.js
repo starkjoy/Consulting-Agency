@@ -55,7 +55,7 @@ export default function JobComponent({job}) {
                             </div>
                             <div className="job-info">
                                 <p className="job-description">{shortenDescription(job.description, 20)}</p>
-                                <p className="job-pay">GHS {job.salary}</p>
+                                <p className="job-pay">{job.salary}</p>
                             </div>
                     </div>
                     <div className="apply"><Link className="apply" href={`/home/jobspage/${job.id}/jobdetail`}><p>Apply</p></Link></div>
