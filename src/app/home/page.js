@@ -45,15 +45,13 @@ export default function NewHome() {
             const res = await fetch("/api/contact", {
               method: "POST",
               headers: { "Content-Type": "application/json" },
-              body: JSON.stringify(emailMock),
+              body: JSON.stringify(contactForm),
             });
     
             const result = await res.json();
     
             if (result.success) {
               console.log("✅ Message sent successfully!");
-              console.log("📬 Preview link:", result.previewUrl);
-              if (result.previewUrl) window.open(result.previewUrl, "_blank");
             } else {
               console.error("❌ Failed to send:", result.error);
             }
@@ -104,17 +102,19 @@ export default function NewHome() {
 
 
   return (
-    <div>
+    <div className="home-parent">
         <section id="hero" className="hero">
             <div className="hero-image">
                 <Carousel />
             </div>
-            <div className="hero-text">
-                <p>Find Your Next Career Fast</p>
-            </div>
-            <div className="hero-buttons">
-                { !loggedIn && <Link className="create-account" href="/home/accountpage">Create Account</Link>}
-                <Link className="browse" href="/home/jobspage">Browse Jobs</Link>
+            <div className="hero-pane">
+                <div className="hero-text">
+                    <p>Find Your Next Career Fast</p>
+                </div>
+                <div className="hero-buttons">
+                    { !loggedIn && <Link className="create-account" href="/home/accountpage">Create Account</Link>}
+                    <Link className="browse" href="/home/jobspage">Browse Jobs</Link>
+                </div>
             </div>
         </section>
         <section className="featured">
@@ -233,7 +233,7 @@ export default function NewHome() {
                 <div className="divide"></div>
             </div>
             <div className="contact-card">
-                <div className="contact-title">For Other Questions? <br/>Send us a message</div>
+                <div className="contact-title">For Other Inquiries <br/>Send us a message</div>
                 <div className="contact-container">
                     <div className="contact-fields">
                         <input

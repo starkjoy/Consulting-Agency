@@ -39,9 +39,9 @@ const handleEmailList = () => {
           <Image sizes="100vw" src="/confirmed-vector.svg" height={0} width={0} alt="vector" className="confirm-icon" />
           <p className="appreciation-text">
             Thank you for applying through
-            Realmer Consulting Agency
-            We wish you the best going
-            forward
+            Realmer Consulting Agency<br/>
+            We wish you the best going<br/>
+            forward!!!
           </p>
         </section>
         <section className="confirm-subscription">

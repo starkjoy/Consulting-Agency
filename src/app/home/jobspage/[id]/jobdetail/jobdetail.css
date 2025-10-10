@@ -166,3 +166,90 @@
     color: #242424;
     font-weight: 500;
 }
+
+/* ----------------- Media Queries ------------------- */
+
+/* Tablets and up */
+@media (min-width: 768px) {
+    .divide {
+        width: 500px;
+    }
+
+    .detail-cover {
+        margin-bottom: 20px;
+        background-size: cover;
+        height: 450px;
+    }
+
+    .detail-category {
+        width: 120px;
+    }
+
+    .detail-content-top {
+        width:600px;
+    }
+
+    .detail-notice {
+        width: 100%;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .detail-notice-text {
+        width: 500px;
+    }
+}
+
+
+/* Desktop and up */
+@media (min-width: 1024px) {
+    .divide {
+        width: 800px;
+    }
+
+    .detail-cover {
+        margin-bottom: 30px;
+        background-size: cover;
+        height: 400px;
+        margin-top: 60px;
+    }
+
+    .detail-category {
+        width: 120px;
+    }
+
+    .detail-content-top {
+        width: 1000px;
+    }
+
+    .detail-notice {
+        width: 100%;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .detail-notice-text {
+        width: 800px;
+    }
+
+    .detail-buttons {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .detail-apply {
+        margin-right: 10px;
+    }
+
+    .divide {
+        background-color: #eeeeee;
+        width: 1000px;
+    }
+}

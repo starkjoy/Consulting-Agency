@@ -84,6 +84,18 @@ export default function HomeLayout({children}) {
       <header className="header">
         <div className="top-header">
           <Link href="/home"><Image src="/com_logo.svg" height={0} width={0} alt="logo" className="circle"/></Link>
+            <div className="menu-wrapperL">
+              { !loggedIn && <Link onClick={handleOpenMenu} href="/home/signpage" className="menu-link">Sign In</Link>}
+              { loggedIn && <p onClick={() => { handleSignOut(); handleOpenMenu(); }} className="menu-link">Sign Out</p>}
+              <Link onClick={handleOpenMenu} href="/home/jobspage" className="menu-link">Browse Jobs</Link>
+              <Link onClick={handleOpenMenu} href="/#categories" className="menu-link">Categories</Link>
+              <Link onClick={handleOpenMenu} href="/#process" className="menu-link">How It Works</Link>
+              <Link onClick={handleOpenMenu} href="/#about" className="menu-link">About</Link>
+              <Link onClick={handleOpenMenu} href="/#contact" className="menu-link">Contact</Link>
+              <Link onClick={handleOpenMenu} href="/#subscription" className="menu-link">Subscription</Link>
+              {/* <Link className="menu-link" href="/home/categorypage">Category</Link>
+              <Link className="menu-link" href="/home/adminpage">Admin</Link> */}
+            </div>
           <div className="header-profile">
             { loggedIn && <p style={{backgroundColor: profileColor }} className="profile-name">{loggedName[0]}</p>}
             <Image onClick={handleOpenMenu} src="/menu_icon.svg" height={0} width={0} alt="menu" className="menu-icon"/>

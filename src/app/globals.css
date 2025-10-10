@@ -1,13 +1,12 @@
 @import "tailwindcss";
 
 
-/* @media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
   }
-} */
-
+}
 
 body {
   background: var(--background);
@@ -16,3 +15,16 @@ body {
   overscroll-behavior: none; 
   scroll-behavior: smooth;
 }
+
+img,
+svg {
+  -webkit-filter: none !important;
+  filter: none !important;
+  forced-color-adjust: none;
+}
+
+
+
+
+
+

@@ -4,37 +4,28 @@ import nodemailer from "nodemailer";
 
 
 export async function sendMessage({ contactName, messageTitle, contactEmail, contactMessage }) {
-  // Create a test Ethereal account (for sandbox testing)
-  const testAccount = await nodemailer.createTestAccount();
+
 
   const transporter = nodemailer.createTransport({
-    host: "smtp.ethereal.email",
-    port: 587,
-    secure: false,
+    host: "smtp.hostinger.com",
+    port: 465,
+    secure: true,
     auth: {
-      user: testAccount.user,
-      pass: testAccount.pass,
+      user: process.env.EMAIL_USER,
+      pass: process.env.EMAIL_PASS,
     },
   });
 
   // Send the message
   const info = await transporter.sendMail({
-    from: `<${contactEmail}>`,
-    to: "you@realmer.com",
-    subject: `${messageTitle}`,
+    from: `Realmer Contact Form <${process.env.EMAIL_USER}>`,
+    replyTo: contactEmail,
+    to: process.env.EMAIL_USER,
+    subject: `${messageTitle} - from ${contactName}`,
     text: contactMessage,
-    html: `
-      <div style="font-family: Arial, sans-serif; line-height: 1.6;">
-        <h2>New message from ${contactName}</h2>
-        <p><strong>Email:</strong> ${contactEmail}</p>
-        <p><strong>Message:</strong></p>
-        <p>${contactMessage}</p>
-      </div>
-    `,
+    html: `${contactMessage}`,
   });
 
-  return {
-    success: true,
-    previewUrl: nodemailer.getTestMessageUrl(info),
-  };
+  return { success: true, messageId: info.messageId };
+
 }

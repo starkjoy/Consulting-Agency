@@ -9,6 +9,7 @@ import {ApplicationForm, FormWrapperA, FormWrapperC, FormWrapperD, FormWrapperE,
 import { useStore } from "../../../../../../../store/useStore"
 import { insertSubmission } from "../../../../../../../lib/insertData"
 import { fetchForm } from "../../../../../../../lib/fetchForm"
+import { useRouter } from "next/navigation"; 
 
 export default function ApplyPage({params}) {
 
@@ -25,6 +26,9 @@ export default function ApplyPage({params}) {
   const [formFilled, setFormFilled] = useState(false);
   const [emptyFields, setEmptyFields] = useState(true);
   const [saveFormData, setSaveFormData] = useState(false);
+  const [errorNotice, setErrorNotice] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const router = useRouter();
 
   const formTest = {
     userID: userId,
@@ -84,7 +88,7 @@ export default function ApplyPage({params}) {
 
   useEffect(() => {
     if (!shouldSend) return
-
+    setIsLoading(true);
     const sendForm = async () => {
 
       const data = new FormData();
@@ -93,7 +97,7 @@ export default function ApplyPage({params}) {
       data.append("fullVideo", formData.fullVideo);
       data.append("imageCardID", formData.imageCardID);
       data.append("documentCV", formData.documentCV);
-      data.append("metadata", JSON.stringify(formData));
+      data.append("metadata", JSON.stringify(formTest));
 
       try {
         const res = await fetch("/api/send-form", {
@@ -104,14 +108,12 @@ export default function ApplyPage({params}) {
         const result = await res.json()
         if (result.success) {
           console.log("✅ Email sent!")
-          console.log("Preview link:",result.previewUrl)
-
-          // 👉 open Ethereal preview in new tab
-          if (result.previewUrl) {
-            window.open(result.previewUrl, "_blank")
-          }
+          setIsLoading(false);
+          router.push("/home/jobspage/1/jobdetail/applypage/confirmpage");
         } else {
           console.error("❌ Failed:", result.error)
+          setIsLoading(false);
+          setErrorNotice(true);
         }
       } catch (err) {
         console.error("❌ Error sending:", err.message)
@@ -169,11 +171,11 @@ export default function ApplyPage({params}) {
     const skipKeys = ["userID", "specifyChallenge"];
   
     const allFilled =
-      Object.keys(formData).length > 0 &&
+      Object.keys(formTest).length > 0 &&
       Object.keys(formTest)
         .filter((key) => !skipKeys.includes(key))
         .every((key) => {
-          const val = formData[key];
+          const val = formTest[key];
           return val !== null && val !== undefined && val.toString().trim() !== "";
         });
   
@@ -182,7 +184,7 @@ export default function ApplyPage({params}) {
       console.log("Form is fully filled ✅");
       // maybe trigger auto-save or set state
     }
-  }, [formData]);
+  }, [formTest]);
 
   const handleSubmit = () => {
     setShouldSend(true);
@@ -192,6 +194,11 @@ export default function ApplyPage({params}) {
 
   return (
     <div>
+        { isLoading && <section className="loading-container">
+          <div className="loading-wrapper">
+            <div className="loading-pill">Applying...</div>
+          </div>
+        </section>}
         <section className="apply-head">
           <p className="form-title">Please Fill Out The <br/>Form Below</p>
           <div className="form-note">
@@ -329,8 +336,19 @@ export default function ApplyPage({params}) {
           </div>}
           <div className="save-notice"></div>
           {/* <Link onClick={handleSubmit} className="apply-submit" href={`/home/jobspage/${job && job.id}/jobdetail/applypage/confirmpage`}>Submit Application</Link> */}
-          { dataConsent && formFilled ? <Link onClick={handleSubmit} className="apply-submit" href={`/home/jobspage/1/jobdetail/applypage/confirmpage`}>Submit Application</Link> : <p className="no-submit">Submit Application</p>}
+          { dataConsent && formFilled ? <p onClick={handleSubmit} className="apply-submit">Submit Application</p> : <p className="no-submit">Submit Application</p>}
         </section>
+        <section className="account-notice">
+        <div className="divider">
+          <div className="divide"></div>
+        </div>
+        {errorNotice && (
+          <p className="account-notice-text">
+            Failed to apply, <br /> please try again
+          </p>
+        )}
+        {/* <Link href="/home/jobspage/1/jobdetail/applypage/confirmpage">Confirm</Link> */}
+      </section>
     </div>
   );
 }

@@ -139,3 +139,44 @@ ul > li {
 .future-prospect, .conclusion-body {
     width: 310px;
 }
+
+/* ----------------- Media Queries ------------------- */
+
+/* Tablets and up */
+@media (min-width: 768px) {
+    .introduction-body, .services-body, .purpose-body, .conclusion-body,
+    .future-prospect, .success-stories, .services-intro
+    {
+        width: 500px;
+    }
+
+    .quote-body {
+        width: 400px;
+    }
+
+    .qdivide {
+        width: 450px;
+    }
+}
+
+@media (min-width: 1024px) {
+
+    .rcg-logo {
+        padding-top: 85px;
+    }
+
+    .introduction-body, .services-body, .purpose-body, .conclusion-body,
+    .future-prospect, .success-stories, .services-intro
+    {
+        width: 1000px;
+    }
+
+    .quote-body {
+        width: 600px;
+    }
+
+    .qdivide {
+        width: 900px;
+    }
+
+  }

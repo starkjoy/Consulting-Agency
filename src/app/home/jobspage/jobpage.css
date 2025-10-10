@@ -86,6 +86,7 @@
     color: #4E4E4E;
     margin-bottom: 18px;
     margin-left: 15px;
+    cursor: pointer;
 }
 
 .filter-arrow {
@@ -116,6 +117,7 @@
     font-size: 16px;
     border-bottom: 1px solid #eeeeee;
     padding: 20px 0px;
+    cursor: pointer;
 }
 
 .filter-head-category {
@@ -197,6 +199,7 @@
     border-radius: 20px;
     @apply  w-[120px] h-[38px];
     color: #4E4E4E;
+    cursor: pointer;
 }
 
 .result-selected {
@@ -204,6 +207,7 @@
     align-items: center;
     justify-content: center;
     margin-right: 10px;
+    cursor: pointer;
 }
 
 .result-selected > p {
@@ -217,6 +221,7 @@
     @apply  w-[120px] h-[38px];
     color: white;
     background-color: #010157;
+    cursor: pointer;
 }
 
 .com-pill {
@@ -238,6 +243,7 @@
     @apply h-[38px];
     padding: 0px 15px;
     color: #4E4E4E;
+    cursor: pointer;
 }
 
 .com-selected {
@@ -259,8 +265,33 @@
     color: white;
     padding: 0px 15px;
     background-color: #010157;
+    cursor: pointer;
 }
 
 .nothing-found {
     margin-bottom: 20px;
+}
+
+/* ----------------- Media Queries ------------------- */
+
+/* Tablets and up */
+@media (min-width: 768px) {
+    .search-job > input {
+        width: 400px;
+    }
+
+    .job-top {
+        margin-top: 20px;
+    }
+}
+
+/* Desktop and up */
+@media (min-width: 1024px) {
+    .search-job > input {
+        width: 500px;
+    }
+
+    .job-top {
+        margin-top: 80px;
+    }
 }

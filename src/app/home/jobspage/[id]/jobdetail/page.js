@@ -97,7 +97,7 @@ export default function JobDetail({params}) {
                 <div className="divider">
                     <div className="divide"></div>
                 </div>
-                <p className="detail-pay">GHS {job?.salary}</p>
+                <p className="detail-pay">{job?.salary}</p>
             </div>
             <div className="detail-buttons">
                 <Link className="detail-apply" href={`/home/jobspage/${job?.id}/jobdetail/applypage`}>{!loggedIn ? `Apply as Guest` : `Apply`}</Link>
