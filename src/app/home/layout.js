@@ -85,8 +85,8 @@ export default function HomeLayout({children}) {
         <div className="top-header">
           <Link href="/home"><Image src="/com_logo.svg" height={0} width={0} alt="logo" className="circle"/></Link>
             <div className="menu-wrapperL">
-              { !loggedIn && <Link onClick={handleOpenMenu} href="/home/signpage" className="menu-link">Sign In</Link>}
-              { loggedIn && <p onClick={() => { handleSignOut(); handleOpenMenu(); }} className="menu-link">Sign Out</p>}
+              { !loggedIn && <Link onClick={handleOpenMenu} href="/home/signpage" className="menu-link sign">Sign In</Link>}
+              { loggedIn && <p onClick={() => { handleSignOut(); handleOpenMenu(); }} className="menu-link sign">Sign Out</p>}
               <Link onClick={handleOpenMenu} href="/home/jobspage" className="menu-link">Browse Jobs</Link>
               <Link onClick={handleOpenMenu} href="/#categories" className="menu-link">Categories</Link>
               <Link onClick={handleOpenMenu} href="/#process" className="menu-link">How It Works</Link>
