@@ -158,7 +158,7 @@ export default function JobPage() {
           { !findJob && 
             <div className="filter-parent">
               <div onClick={() => setFilterTag(prev => !prev)} className="filter-button">
-                <p>Filter tags</p>
+                <p>Select Category/Company</p>
                 <Image src="/filter_arrow.svg" className={ filterTag ? "filter-arrow" : "filter-arrow2" } sizes="100vw" height={0} width={0} alt="arrow" />
               </div>
               {filterTag && <div className="filter-pane">
