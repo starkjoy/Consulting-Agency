@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Realmer Consulting Agency | International Recruitment & Business Consulting – Ghana",
+  title: "Realmer Consulting Agency - Ghana",
   description:
     "Realmer Consulting Agency is Ghana’s leading international recruitment and consulting firm, connecting skilled professionals to global jobs. With offices in Accra and Kumasi, we offer expert staffing, overseas job placement, business consulting, and travel & tour services.",
   keywords: [
