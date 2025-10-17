@@ -4,6 +4,7 @@ import "./sign.css";
 import { useState, useEffect } from "react";
 import { signAccount } from "../../../../lib/signAccount";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 export default function SignInPage() {
   const [userEmail, setUserEmail] = useState("");
@@ -103,10 +104,10 @@ export default function SignInPage() {
             <p className="pass-note">Forgot Password? Contact <span className="admin-email">info@realmerconsultingagency.ceo</span></p>
           </div>
         </div>
-
         <div className={ passNote ? "account-passive" : "account-create"}>
           <p onClick={handleSignIn}>Sign In</p>
         </div>
+        <p className="register-note">Don't have an account? <Link href="/home/accountpage" className="register-create">Register here</Link></p>
       </section>
       <section className="account-notice">
         <div className="divider">

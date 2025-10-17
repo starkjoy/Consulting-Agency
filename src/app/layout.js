@@ -28,7 +28,10 @@ export const metadata = {
     "Kumasi recruitment agency",
     "job placement Ghana",
     "travel and tour agency Ghana",
-    "Realmer Consulting Agency"
+    "Realmer Consulting Agency",
+    "Realmer Consulting",
+    "Realmer Agency",
+    "realmer"
   ],
   openGraph: {
     title: "Realmer Consulting Agency – Global Recruitment & Business Consulting",

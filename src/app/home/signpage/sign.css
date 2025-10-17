@@ -125,6 +125,16 @@
     box-shadow: 0px 0px 10px 2px rgb(156, 156, 156);
 }
 
+.register-note {
+    color:#010157;
+    margin-top: 20px;
+    font-weight: 300;
+}
+
+.register-create {
+    font-weight: 400;
+}
+
 /* Desktop and up */
 @media (min-width: 1024px) {
     .account-form {
