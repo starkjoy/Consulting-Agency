@@ -54,7 +54,7 @@ export default function JobComponent({job}) {
                                 <p className="job-title">{job.title}</p>
                             </div>
                             <div className="job-info">
-                                <p className="job-description">{shortenDescription(job.description, 20)}</p>
+                                <p className="job-description">{shortenDescription(job.description, 15)}</p>
                                 <p className="job-pay">{job.salary}</p>
                             </div>
                     </div>

@@ -302,7 +302,7 @@
 }
 
 .job-info {
-    width: 100%
+    width: 100%;
 }
 
 .job-title {
@@ -314,6 +314,7 @@
 .job-description {
     color: #AEAEAE;
     font-size: 15px;
+    height: 50px;
 }
 
 .apply {
