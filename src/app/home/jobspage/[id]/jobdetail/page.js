@@ -101,7 +101,7 @@ export default function JobDetail({params}) {
             </div>
             <div className="detail-buttons">
                 <Link className="detail-apply" href={`/home/jobspage/${job?.id}/jobdetail/applypage`}>{!loggedIn ? `Apply as Guest` : `Apply`}</Link>
-                { !loggedIn && <Link className="detail-create" href={`/home/jobspage/${job?.id}/jobdetail/accountpage`}>Create Account</Link>}
+                { !loggedIn && <Link className="detail-create" href={`/home/accountpage`}>Create Account</Link>}
             </div>
         </section>
         <section className="detail-notice">
