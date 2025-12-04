@@ -207,6 +207,10 @@ export default function NewHome() {
                         <Image src="/pic_5.png" height={0} width={0} alt="profile" sizes="100vw" className="company-profile-pic"/>
                         <div className="company-profile-name">Frank Osei Tutu <br/><span className="profile-post">Business Consultant</span></div>
                     </div>
+                    <div className="company-profile">
+                        <Image src="/pic_6.png" height={0} width={0} alt="profile" sizes="100vw" className="company-profile-pic"/>
+                        <div className="company-profile-name">Prince Owusu <br/><span className="profile-post">Int. HR Manager</span></div>
+                    </div>
                 </div>
             </div>
             <div className="contact-content">
